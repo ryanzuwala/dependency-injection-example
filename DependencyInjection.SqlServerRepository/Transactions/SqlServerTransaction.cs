@@ -1,12 +1,18 @@
-﻿using DependencyInjection.Common.Repositories;
-using DependencyInjection.Common.Repositories.Transactions;
-using DependencyInjection.SqlServerRepository.Contexts;
+﻿using DependencyInjection.Common.Repositories.Transactions;
+using DependencyInjection.Repositories.SqlServer.Contexts;
 
-namespace DependencyInjection.SqlServerRepository.Transactions
+namespace DependencyInjection.Repositories.SqlServer.Transactions
 {
     public class SqlServerTransaction : ITransaction
     {
         private DependencyInjectionDbContext _databaseContext;
+
+        internal SqlServerTransaction(string connectionStringOrName)
+        {
+            this._databaseContext = new DependencyInjectionDbContext(connectionStringOrName);
+        }
+
+        private SqlServerTransaction() { }
 
         public void Commit()
         {
@@ -18,7 +24,7 @@ namespace DependencyInjection.SqlServerRepository.Transactions
             this._databaseContext.Dispose();
         }
 
-        internal object DatabaseContext
+        internal DependencyInjectionDbContext DatabaseContext
         {
             get
             {

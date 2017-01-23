@@ -43,6 +43,10 @@
       <HintPath>..\packages\LightInject.5.0.0\lib\net45\LightInject.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LightInject.WebApi, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LightInject.WebApi.2.0.0\lib\net45\LightInject.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -109,6 +113,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DependencyInjectionConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Global.asax.cs">
@@ -133,6 +138,10 @@
     <ProjectReference Include="..\DependencyInjection.Common\DependencyInjection.Common.csproj">
       <Project>{9edeb7ac-1620-4a7d-b452-c9fb8bfdff8e}</Project>
       <Name>DependencyInjection.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyInjection.SqlServerRepository\DependencyInjection.Repositories.SqlServer.csproj">
+      <Project>{95d5951a-ddd4-45bb-8b75-07f27d2de67f}</Project>
+      <Name>DependencyInjection.Repositories.SqlServer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

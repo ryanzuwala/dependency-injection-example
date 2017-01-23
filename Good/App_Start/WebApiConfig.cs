@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using Good.App_Start;
 
 namespace Good
 {
@@ -9,6 +7,9 @@ namespace Good
     {
         public static void Register(HttpConfiguration config)
         {
+            //Dependency injection
+            DependencyInjectionConfig.Configure(config);
+
             // Web API configuration and services
 
             // Web API routes

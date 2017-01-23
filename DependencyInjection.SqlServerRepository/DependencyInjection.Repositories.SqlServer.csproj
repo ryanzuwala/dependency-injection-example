@@ -40,11 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooksSqlServerRepository.cs" />
+    <Compile Include="SqlServerBooksRepository.cs" />
     <Compile Include="Contexts\DependencyInjectionDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerRepositoryBase.cs" />
     <Compile Include="Transactions\SqlServerTransaction.cs" />
+    <Compile Include="Transactions\SqlServerTransactionFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DependencyInjection.Common\DependencyInjection.Common.csproj">

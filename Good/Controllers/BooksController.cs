@@ -51,5 +51,10 @@ namespace Good.Controllers
                 return Created(string.Format("/Books/{0}", book.ID), book);
             }
         }
+
+        public IHttpActionResult Get()
+        {
+            return Ok(this.booksRepository.RepositoryInfo);
+        }
     }
 }

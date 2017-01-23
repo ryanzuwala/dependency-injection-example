@@ -1,11 +1,12 @@
 ﻿using DependencyInjection.Common.Repositories.Transactions;
-using DependencyInjection.SqlServerRepository.Transactions;
+using DependencyInjection.Repositories.SqlServer.Contexts;
+using DependencyInjection.Repositories.SqlServer.Transactions;
 
 namespace DependencyInjection.SqlServerRepository
 {
-    internal abstract class SqlServerRepositoryBase
+    public abstract class SqlServerRepositoryBase
     {
-        internal object GetContext(ITransaction transaction)
+        internal DependencyInjectionDbContext GetContext(ITransaction transaction)
         {
             SqlServerTransaction sqlTransaction = (SqlServerTransaction)transaction;
             return sqlTransaction.DatabaseContext;
