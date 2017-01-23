@@ -18,7 +18,7 @@ namespace DependencyInjection.Repositories.SqlServer.Contexts
                     Author = "Ryan Zuwala",
                     Publisher = "BizStream",
                     Title = "A good book",
-                    YearPublished = 2017
+                    PublishDate = DateTime.Now
                 },
                 new Book
                 {
@@ -26,7 +26,7 @@ namespace DependencyInjection.Repositories.SqlServer.Contexts
                     Author = "Some Guy",
                     Publisher = "Who Knows",
                     Title = "Who Cares",
-                    YearPublished = 2017
+                    PublishDate = DateTime.Now
                 }
             };
         }

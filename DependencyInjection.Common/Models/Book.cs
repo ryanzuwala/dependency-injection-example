@@ -1,4 +1,6 @@
-﻿namespace DependencyInjection.Common.Models
+﻿using System;
+
+namespace DependencyInjection.Common.Models
 {
     public class Book
     {
@@ -6,6 +8,6 @@
         public string Title { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }
-        public int YearPublished { get; set; }   
+        public DateTime PublishDate { get; set; }
     }
 }

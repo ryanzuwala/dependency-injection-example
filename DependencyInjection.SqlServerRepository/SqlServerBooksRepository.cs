@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DependencyInjection.Common.Models;
 using DependencyInjection.Common.Repositories;
 using DependencyInjection.Common.Repositories.Transactions;
 using DependencyInjection.Repositories.SqlServer.Contexts;
-using DependencyInjection.Repositories.SqlServer.Transactions;
 using DependencyInjection.SqlServerRepository;
 
 namespace DependencyInjection.Repositories.SqlServer
@@ -34,11 +32,7 @@ namespace DependencyInjection.Repositories.SqlServer
         {
             DependencyInjectionDbContext context = base.GetContext(transaction);
 
-            return context.Books
-                .Where(b =>
-                        b.Publisher == publisherName
-                )
-                .ToList();
+            return context.Books.Where(b => b.Publisher == publisherName).ToList();
         }
 
         public List<Book> Query(ITransaction transaction, string keywords)
@@ -65,24 +59,46 @@ namespace DependencyInjection.Repositories.SqlServer
             {
                 bookToUpdate.Publisher = item.Publisher;
                 bookToUpdate.Title = item.Title;
-                bookToUpdate.YearPublished = item.YearPublished;
+                bookToUpdate.PublishDate = item.PublishDate;
                 bookToUpdate.Author = item.Author;
             }
         }
 
         public void Delete(ITransaction transaction, int ID)
         {
-            throw new NotImplementedException();
+            DependencyInjectionDbContext context = base.GetContext(transaction);
+
+            Book bookToDelete = context.Books.FirstOrDefault(b => b.ID == ID);
+            if(bookToDelete != null)
+            {
+                context.Books.Remove(bookToDelete);
+            }
         }
 
-        public List<Book> Get(ITransaction transaction, int ID)
+        public Book Get(ITransaction transaction, int ID)
         {
-            throw new NotImplementedException();
+            DependencyInjectionDbContext context = base.GetContext(transaction);
+
+            return context.Books.FirstOrDefault(b => b.ID == ID);
         }
 
         public List<Book> GetAllByPublishDateRange(ITransaction transaction, DateTime startDate, DateTime endDate)
         {
-            throw new NotImplementedException();
+            DependencyInjectionDbContext context = base.GetContext(transaction);
+
+            return context.Books
+                .Where(b =>
+                        b.PublishDate >= startDate
+                     && b.PublishDate <= endDate
+                )
+                .ToList();
+        }
+
+        public List<Book> GetAll(ITransaction transaction)
+        {
+            DependencyInjectionDbContext context = base.GetContext(transaction);
+
+            return context.Books;
         }
     }
 }

@@ -116,6 +116,7 @@
     <Compile Include="App_Start\DependencyInjectionConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BooksController.cs" />
+    <Compile Include="Controllers\RepoInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -138,6 +139,10 @@
     <ProjectReference Include="..\DependencyInjection.Common\DependencyInjection.Common.csproj">
       <Project>{9edeb7ac-1620-4a7d-b452-c9fb8bfdff8e}</Project>
       <Name>DependencyInjection.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyInjection.OracleRepository\DependencyInjection.Repositories.Oracle.csproj">
+      <Project>{e53cec0d-cd30-4107-865a-7e95a2aa5e2b}</Project>
+      <Name>DependencyInjection.Repositories.Oracle</Name>
     </ProjectReference>
     <ProjectReference Include="..\DependencyInjection.SqlServerRepository\DependencyInjection.Repositories.SqlServer.csproj">
       <Project>{95d5951a-ddd4-45bb-8b75-07f27d2de67f}</Project>

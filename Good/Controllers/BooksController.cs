@@ -54,7 +54,11 @@ namespace Good.Controllers
 
         public IHttpActionResult Get()
         {
-            return Ok(this.booksRepository.RepositoryInfo);
+            using (ITransaction transaction = this.transactionFactory.Create())
+            {
+                List<Book> allBooks = this.booksRepository.GetAll(transaction);
+                return Ok(allBooks);
+            }
         }
     }
 }
